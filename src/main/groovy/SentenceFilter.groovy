@@ -1,8 +1,11 @@
 class SentenceFilter {
   def change(String sentence) {
-    String banned_word = "orange"
-    String[] list = sentence.split(" ").collect {
-      it.toLowerCase() == banned_word ? this.replaceVowels(it) : it;
+    String[] banned_words = ["orange", 'red'];
+    String[] list = sentence.split(" ")
+    banned_words.each {banned_word ->
+        list = list.collect {word ->
+          word.toLowerCase() == banned_word ? this.replaceVowels(word) : word;
+        }
     }
     return list.join(' ')
   }

@@ -35,12 +35,12 @@ class SentenceFilterSpec extends Specification {
     result == "The -r-ng- coloured bat and -r-ng- hat";
   }
 
-  // def 'replace two different banned words in multiple word sentence'() {
-  //   when:
-  //   String result = sentence_filter.change("The red orange is happy");
-  //
-  //   then:
-  //   result == "The R-d -r-ng- is happy";
-  // }
+  def 'replace two different banned words in multiple word sentence'() {
+    when:
+    String result = sentence_filter.change("The Red orange is happy");
+
+    then:
+    result == "The R-d -r-ng- is happy";
+  }
 
 }
