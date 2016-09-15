@@ -1,0 +1,18 @@
+apply plugin: "groovy"
+
+version = "1.0"
+description = "Tech Test"
+
+sourceCompatibility = 1.5
+
+repositories {
+  mavenCentral()
+  maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+  compile "org.codehaus.groovy:groovy-all:2.4.1"
+  testRuntime "cglib:cglib-nodep:3.1"
+  testRuntime "org.objenesis:objenesis:2.1"
+  testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+}
