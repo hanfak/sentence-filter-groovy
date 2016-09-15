@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SentenceFilterSpec" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-09-15T13:14:11" hostname="Hanifs-MBP-2" time="0.13">
+<testsuite name="SentenceFilterSpec" tests="3" skipped="0" failures="0" errors="0" timestamp="2016-09-15T13:21:54" hostname="Hanifs-MBP-2" time="0.158">
   <properties/>
-  <testcase name="replace n different vowels in 1 word sentence" classname="SentenceFilterSpec" time="0.128"/>
-  <testcase name="no replacement when no vowels in word sentence" classname="SentenceFilterSpec" time="0.002"/>
+  <testcase name="replace n different vowels in 1 word sentence" classname="SentenceFilterSpec" time="0.155"/>
+  <testcase name="no replacement when no vowels in word sentence" classname="SentenceFilterSpec" time="0.0"/>
+  <testcase name="replace vowels that are case sensitive in 1 word sentence" classname="SentenceFilterSpec" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -27,4 +27,12 @@ class SentenceFilterSpec extends Specification {
     result == 'rhythm';
   }
 
+  def 'replace vowels that are case insensitive in 1 word sentence'() {
+    when:
+    String result = sentence_filter.change('OrAnge');
+
+    then:
+    result == '-r-ng-';
+  }
+
 }
