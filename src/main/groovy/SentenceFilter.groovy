@@ -1,5 +1,5 @@
 class SentenceFilter {
   def change(String sentence) {
-    return sentence.replaceAll(/[aeo]/,'-');
+    return sentence.replaceAll(/[aeiou]/,'-');
   }
 }

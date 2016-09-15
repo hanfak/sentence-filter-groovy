@@ -27,6 +27,22 @@ class SentenceFilterSpec extends Specification {
     result == '-r-ng-'
   }
 
+  def 'replace n different vowels in 1 word sentence'() {
+    when:
+    String result = sentence_filter.change(word)
+
+    then:
+    result == expected
+
+    where:
+    word      | expected
+    'red'     | 'r-d'
+    'orange'  | '-r-ng-'
+    'green'   | 'gr--n'
+    'indigo'  | '-nd-g-'
+    'purple'  | 'p-rpl-'
+  }
+
   // test rest of vowels i and u
   // test no vowels in word
 
