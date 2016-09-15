@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SentenceFilterSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-09-15T12:49:44" hostname="Hanifs-MBP-2" time="0.099">
+<testsuite name="SentenceFilterSpec" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-09-15T12:53:34" hostname="Hanifs-MBP-2" time="0.12">
   <properties/>
-  <testcase name="replace 1 vowel in 1 word sentence" classname="SentenceFilterSpec" time="0.099"/>
+  <testcase name="replace 1 vowel in 1 word sentence" classname="SentenceFilterSpec" time="0.119"/>
+  <testcase name="replace 2 same vowels in 1 word sentence" classname="SentenceFilterSpec" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

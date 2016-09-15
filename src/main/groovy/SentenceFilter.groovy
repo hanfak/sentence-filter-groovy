@@ -1,5 +1,5 @@
 class SentenceFilter {
     def change(String sentence) {
-      return 'r-d';
+      return sentence.replaceAll(/e/,'-');
     }
 }

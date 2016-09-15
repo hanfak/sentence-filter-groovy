@@ -10,4 +10,12 @@ class SentenceFilterSpec extends Specification {
       then:
       result == 'r-d'
   }
+
+  def 'replace 2 same vowels in 1 word sentence'() {
+      when:
+      String result = sentence_filter.change("green")
+
+      then:
+      result == 'gr--n'
+  }
 }
