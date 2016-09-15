@@ -19,4 +19,14 @@ class SentenceFilterSpec extends Specification {
     result == "The coloured bat";
   }
 
+  def 'replace muliple same banned word in multiple word sentence'() {
+    when:
+    String result = sentence_filter.change("The orange coloured bat and orange hat");
+
+    then:
+    result == "The -r-ng- coloured bat and -r-ng- hat";
+  }
+
+  
+
 }
