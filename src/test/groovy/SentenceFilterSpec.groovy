@@ -27,6 +27,20 @@ class SentenceFilterSpec extends Specification {
     result == "The -r-ng- coloured bat and -r-ng- hat";
   }
 
-  
+  def 'replace muliple same banned word different cases in multiple word sentence'() {
+    when:
+    String result = sentence_filter.change("The orange coloured bat and Orange hat");
+
+    then:
+    result == "The -r-ng- coloured bat and -r-ng- hat";
+  }
+
+  // def 'replace two different banned words in multiple word sentence'() {
+  //   when:
+  //   String result = sentence_filter.change("The red orange is happy");
+  //
+  //   then:
+  //   result == "The R-d -r-ng- is happy";
+  // }
 
 }

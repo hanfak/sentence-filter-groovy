@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SentenceFilterSpec" tests="3" skipped="0" failures="0" errors="0" timestamp="2016-09-15T15:05:55" hostname="Hanifs-MBP-2" time="0.143">
+<testsuite name="SentenceFilterSpec" tests="4" skipped="0" failures="0" errors="0" timestamp="2016-09-15T15:23:10" hostname="Hanifs-MBP-2" time="0.118">
   <properties/>
-  <testcase name="replace vowels in multiple word sentence" classname="SentenceFilterSpec" time="0.136"/>
-  <testcase name="replace no vowels in multiple word sentence" classname="SentenceFilterSpec" time="0.005"/>
+  <testcase name="replace vowels in multiple word sentence" classname="SentenceFilterSpec" time="0.113"/>
   <testcase name="replace no vowels in multiple word sentence" classname="SentenceFilterSpec" time="0.001"/>
+  <testcase name="replace muliple same banned word in multiple word sentence" classname="SentenceFilterSpec" time="0.001"/>
+  <testcase name="replace muliple same banned word different cases in multiple word sentence" classname="SentenceFilterSpec" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
