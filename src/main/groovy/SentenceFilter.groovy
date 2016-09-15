@@ -1,5 +1,5 @@
 class SentenceFilter {
-    def check() {
-      return 'hello it is working!';
+    def change(String sentence) {
+      return 'r-d';
     }
 }

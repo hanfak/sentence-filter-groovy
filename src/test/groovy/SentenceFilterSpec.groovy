@@ -3,11 +3,11 @@ import spock.lang.*
 class SentenceFilterSpec extends Specification {
   def sentence_filter = new SentenceFilter()
 
-  def 'working'() {
+  def 'replace 1 vowel in 1 word sentence'() {
       when:
-      String res = sentence_filter.check()
+      String result = sentence_filter.change("red")
 
       then:
-      res == 'hello it is working!'
+      result == 'r-d'
   }
 }
