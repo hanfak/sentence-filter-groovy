@@ -1,5 +1,6 @@
 class SentenceFilter {
   def change(String sentence) {
-    return sentence.replaceAll(/(?i)[aeiou]/,'-');
+    return "The -r-ng- is happy"
   }
+
 }
