@@ -3,7 +3,7 @@ class SentenceFilter {
   private def banned_words;
 
   def SentenceFilter(exceptions, banned_words) {
-    this.exception_words= exceptions;
+    this.exception_words = exceptions;
     this.banned_words = banned_words;
   }
 
@@ -16,7 +16,7 @@ class SentenceFilter {
   }
 
   private def checkWordNotAnException(word) {
-    !this.exception_words.findAll { it.toLowerCase() == word }
+    return !this.exception_words.contains(word.toLowerCase());
   }
 
   private def checkWordContainsBannedWord(word) {
