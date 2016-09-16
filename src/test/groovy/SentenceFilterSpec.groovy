@@ -3,7 +3,7 @@ import spock.lang.*
 class SentenceFilterSpec extends Specification {
   def sentence_filter = new SentenceFilter()
 
-  def 'replace vowels in multiple word sentence'() {
+  def '001 replace vowels in multiple word sentence'() {
     when:
     String result = sentence_filter.change("The orange is happy");
 
@@ -11,7 +11,7 @@ class SentenceFilterSpec extends Specification {
     result == "The -r-ng- is happy";
   }
 
-  def 'replace no vowels in multiple word sentence'() {
+  def '002 replace no vowels in multiple word sentence'() {
     when:
     String result = sentence_filter.change("The coloured bat");
 
@@ -19,7 +19,7 @@ class SentenceFilterSpec extends Specification {
     result == "The coloured bat";
   }
 
-  def 'replace muliple same banned word in multiple word sentence'() {
+  def '003 replace muliple same banned word in multiple word sentence'() {
     when:
     String result = sentence_filter.change("The orange coloured bat and orange hat");
 
@@ -27,7 +27,7 @@ class SentenceFilterSpec extends Specification {
     result == "The -r-ng- coloured bat and -r-ng- hat";
   }
 
-  def 'replace muliple same banned word different cases in multiple word sentence'() {
+  def '004 replace muliple same banned word different cases in multiple word sentence'() {
     when:
     String result = sentence_filter.change("The orange coloured bat and Orange hat");
 
@@ -35,12 +35,28 @@ class SentenceFilterSpec extends Specification {
     result == "The -r-ng- coloured bat and -r-ng- hat";
   }
 
-  def 'replace two different banned words in multiple word sentence'() {
+  def '005 replace two different banned words in multiple word sentence'() {
     when:
     String result = sentence_filter.change("The Red orange is happy");
 
     then:
     result == "The R-d -r-ng- is happy";
+  }
+
+  def '006 replace banned word in another word'() {
+    when:
+    String result = sentence_filter.change("The Reddit orange is happy");
+
+    then:
+    result == "The R-dd-t -r-ng- is happy";
+  }
+
+  def '007 replace banned word in non exception word'() {
+    when:
+    String result = sentence_filter.change("The Reddit coloured red covered green is happy");
+
+    then:
+    result == "The R-dd-t coloured r-d covered gr--n is happy";
   }
 
 }
