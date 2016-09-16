@@ -73,6 +73,4 @@ class SentenceFilterSpec extends Specification {
     then:
     result == "-r-ng- evergreen fl-r-ng- bl-- Bl--t-c greenbelt r-d r-dd-t blues gr--n  gr--n-ry";
   }
-
-
 }

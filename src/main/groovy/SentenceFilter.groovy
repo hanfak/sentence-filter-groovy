@@ -1,36 +1,26 @@
 class SentenceFilter {
-  private def exceptions;
+  private def exception_words;
   private def banned_words;
 
   def SentenceFilter(exceptions, banned_words) {
-    this.exceptions = exceptions;
+    this.exception_words= exceptions;
     this.banned_words = banned_words;
   }
 
   def change(String sentence) {
     String[] list = sentence.split(" ");
-    this.getBannedWords().each {banned_word ->
-        list = list.collect {word ->
-          this.checkWordContainsBannedWord(word, banned_word) &&  this.checkWordNotInExceptions(word) ? this.replaceVowels(word) : word;
-        }
-    }
+      list = list.collect {word ->
+        this.checkWordContainsBannedWord(word) &&  this.checkWordNotAnException(word) ? this.replaceVowels(word) : word;
+      }
     return list.join(' ');
   }
 
-  private def getExceptionWords() {
-    return this.exceptions;
+  private def checkWordNotAnException(word) {
+    !this.exception_words.findAll { it.toLowerCase() == word }
   }
 
-  private def checkWordNotInExceptions(word) {
-    !this.getExceptionWords().findAll {it.toLowerCase() == word}
-  }
-
-  private def getBannedWords() {
-    return this.banned_words;
-  }
-
-  private def checkWordContainsBannedWord(word, banned_word) {
-    return word.toLowerCase().contains(banned_word)
+  private def checkWordContainsBannedWord(word) {
+    return this.banned_words.findAll { word.toLowerCase().contains(it) }
   }
 
   private def replaceVowels(String word){
