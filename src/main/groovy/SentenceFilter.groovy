@@ -1,4 +1,12 @@
 class SentenceFilter {
+  private def exceptions;
+  private def banned_words;
+
+  def SentenceFilter(exceptions, banned_words) {
+    this.exceptions = exceptions;
+    this.banned_words = banned_words;
+  }
+
   def change(String sentence) {
     String[] list = sentence.split(" ");
     this.getBannedWords().each {banned_word ->
@@ -6,11 +14,11 @@ class SentenceFilter {
           this.checkWordContainsBannedWord(word, banned_word) &&  this.checkWordNotInExceptions(word) ? this.replaceVowels(word) : word;
         }
     }
-    return list.join(' ')
+    return list.join(' ');
   }
 
   private def getExceptionWords() {
-    return ["coloured","covered"];
+    return this.exceptions;
   }
 
   private def checkWordNotInExceptions(word) {
@@ -18,7 +26,7 @@ class SentenceFilter {
   }
 
   private def getBannedWords() {
-    return ["orange", 'red', 'green']
+    return this.banned_words;
   }
 
   private def checkWordContainsBannedWord(word, banned_word) {
