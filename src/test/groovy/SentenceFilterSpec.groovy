@@ -61,4 +61,18 @@ class SentenceFilterSpec extends Specification {
     result == "The R-dd-t coloured r-d covered gr--n is happy";
   }
 
+  def '008 use different exceptions'() {
+    given:
+    def banned_words = ["orange", 'red', 'green', 'blue'];
+    def exceptions = ["evergreen", "greenbelt", "blues"];
+    def sentence_filter = new SentenceFilter(exceptions, banned_words)
+
+    when:
+    String result = sentence_filter.change("orange evergreen florange blue Bluetac greenbelt red reddit blues green  greenary");
+
+    then:
+    result == "-r-ng- evergreen fl-r-ng- bl-- Bl--t-c greenbelt r-d r-dd-t blues gr--n  gr--n-ry";
+  }
+
+
 }
