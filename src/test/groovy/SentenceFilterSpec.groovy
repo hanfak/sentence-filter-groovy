@@ -2,7 +2,7 @@ import spock.lang.*
 
 class SentenceFilterSpec extends Specification {
   def banned_words = ["orange", 'red', 'green'];
-  def exceptions = ["coloured","covered"];
+  def exceptions = new ExceptionWords(["coloured","covered"]);
   def sentence_filter = new SentenceFilter(exceptions, banned_words)
 
   def '001 replace vowels in multiple word sentence'() {
@@ -68,7 +68,7 @@ class SentenceFilterSpec extends Specification {
     def sentence_filter = new SentenceFilter(exceptions, banned_words)
 
     when:
-    String result = sentence_filter.change("orange evergreen florange blue Bluetac greenbelt red reddit blues green  greenary");
+    String result = sentence_filter.change("Orange evergreen flOrange blue Bluetac greenbelt red reddit blues green  greenary");
 
     then:
     result == "-r-ng- evergreen fl-r-ng- bl-- Bl--t-c greenbelt r-d r-dd-t blues gr--n  gr--n-ry";
