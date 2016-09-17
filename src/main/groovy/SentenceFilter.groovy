@@ -9,12 +9,11 @@ class SentenceFilter {
 
   def change(String sentence) {
     String[] list = sentence.split(" ");
-      list = list.collect {word ->
-        this.checkToChangeWord(word) ? this.replaceVowels(word) : word;
-      }
+    list = list.collect { word ->
+      this.checkToChangeWord(word) ? this.replaceVowels(word) : word;
+    }
     return list.join(' ');
   }
-
 
   private def checkWordContainsBannedWord(word) {
     return this.banned_words.find { word.toLowerCase().contains(it) }

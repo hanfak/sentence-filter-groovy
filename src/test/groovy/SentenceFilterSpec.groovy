@@ -84,7 +84,7 @@ class SentenceFilterSpec extends Specification {
     result == "The R-dd-t coloured r-d covered gr--n is happy";
   }
 
-  def '008 use different exceptions'() {
+  def '008 use different set of exception words'() {
     given:
     def banned_words = ["orange", 'red', 'green', 'blue'];
     def sentence_filter = new SentenceFilter(exceptions, banned_words)
