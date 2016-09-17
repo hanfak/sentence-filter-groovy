@@ -20,7 +20,7 @@ class ExceptionWordsSpec extends Specification {
     result == false;
   }
 
-  def '002'() {
+  def '003'() {
     when:
     Boolean result = exception_words.doesNotIncludes("gold");
 
