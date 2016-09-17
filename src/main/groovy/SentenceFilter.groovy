@@ -20,7 +20,7 @@ class SentenceFilter {
   }
 
   private def checkWordContainsBannedWord(word) {
-    return this.banned_words.findAll { word.toLowerCase().contains(it) }
+    return this.banned_words.find { word.toLowerCase().contains(it) }
   }
 
   private def replaceVowels(String word){
