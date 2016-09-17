@@ -4,7 +4,7 @@ class ExceptionWordsSpec extends Specification {
   def exceptions = ["reddit", "blues"];
   def exception_words = new ExceptionWords(exceptions);
 
-  def '001'() {
+  def '001 word in word'() {
     when:
     Boolean result = exception_words.doesNotIncludes("reddit");
 
@@ -12,7 +12,7 @@ class ExceptionWordsSpec extends Specification {
     result == false;
   }
 
-  def '002'() {
+  def '002 word in list of words'() {
     when:
     Boolean result = exception_words.doesNotIncludes("blues");
 
@@ -20,7 +20,7 @@ class ExceptionWordsSpec extends Specification {
     result == false;
   }
 
-  def '003'() {
+  def '003 word not in list of words'() {
     when:
     Boolean result = exception_words.doesNotIncludes("gold");
 

@@ -4,7 +4,7 @@ class BannedWordsSpec extends Specification {
   def banned = ["red", "blue"];
   def banned_words = new BannedWords(banned);
 
-  def '001'() {
+  def '001 word in one word'() {
     when:
     Boolean result = banned_words.containedIn("red");
 
@@ -12,7 +12,7 @@ class BannedWordsSpec extends Specification {
     result == true;
   }
 
-  def '002'() {
+  def '002 word in list of words'() {
     when:
     Boolean result = banned_words.containedIn("Blue");
 
@@ -20,7 +20,7 @@ class BannedWordsSpec extends Specification {
     result == true;
   }
 
-  def '003'() {
+  def '003 word not in list of words'() {
     when:
     Boolean result = banned_words.containedIn("green");
 
@@ -28,7 +28,7 @@ class BannedWordsSpec extends Specification {
     result == false;
   }
 
-  def '004'() {
+  def '004 part of word in list of words'() {
     when:
     Boolean result = banned_words.containedIn("redbelt");
 
@@ -36,7 +36,7 @@ class BannedWordsSpec extends Specification {
     result == true;
   }
 
-  def '005'() {
+  def '005 in middle of word, in list of words'() {
     when:
     Boolean result = banned_words.containedIn("theBluesit");
 
