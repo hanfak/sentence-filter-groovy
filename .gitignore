@@ -1,2 +1,2 @@
-build/*
-.gradle/2.13/*
+build/
+.gradle/

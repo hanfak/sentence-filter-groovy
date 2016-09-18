@@ -3,7 +3,8 @@ import spock.lang.*
 class SentenceFilterSpec extends Specification {
   BannedWords banned = Mock();
   ExceptionWords exceptions = Mock();
-  def sentence_filter = new SentenceFilter(exceptions, banned)
+  Filter filter = new Filter()
+  def sentence_filter = new SentenceFilter(exceptions, banned, filter)
 
   def '001 replace vowels in multiple word sentence'() {
     given:
@@ -99,7 +100,7 @@ class SentenceFilterSpec extends Specification {
 
   def '008 use different set of exception words'() {
     given:
-    def sentence_filter = new SentenceFilter(exceptions, banned)
+    def sentence_filter = new SentenceFilter(exceptions, banned, filter)
     banned.containedIn('Orange') >> true;
     banned.containedIn('florAnge') >> true;
     banned.containedIn('blue') >> true;

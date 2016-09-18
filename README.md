@@ -1,5 +1,3 @@
-Here is the task that Tony would like you to send out to them all for them to complete prior to interview, the interview is about 90mins long:
-
 Text filter pre-Interview task
 
 Write a function that will take a string as an input, identify whether it contains any items from a list of banned words that aren't listed in the exceptions. The function should return the original string with the vowels of all banned words replaced with dashes "-".  All checking should be case insensitive.
