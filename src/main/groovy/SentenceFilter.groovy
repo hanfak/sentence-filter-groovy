@@ -10,6 +10,8 @@ class SentenceFilter {
   }
 
   def change(String sentence) {
+    if(sentence.trim().isEmpty()) { return ''; }
+
     String[] list = sentence.split(" ");
     list = list.collect { word ->
       this.checkToChangeWord(word) ? this.filter.applyTo(word) : word;

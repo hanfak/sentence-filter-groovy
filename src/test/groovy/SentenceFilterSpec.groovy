@@ -112,7 +112,7 @@ class SentenceFilterSpec extends Specification {
 
   def '008 use different set of exception words'() {
     given:
-    banned.containedIn(_)         >>>  [true,false,true,true,
+    banned.containedIn(_)         >>> [true,false,true,true,
                                         true,false,true,true,
                                         false,true,true, true];
     exceptions.doesNotIncludes(_) >> true;
@@ -124,5 +124,19 @@ class SentenceFilterSpec extends Specification {
 
     then:
     result == "-r-ng- evergreen fl-r-ng- bl-- Bl--t-c greenbelt r-d r-dd-t blues gr--n gr--n-ry";
+  }
+
+  def '010 replace space with space'() {
+    when:
+    String result = sentence_filter.change(empty_space);
+
+    then:
+    result == expected;
+
+    where:
+    empty_space | expected
+    ' '         | ''
+    '    '      | ''
+    ''          | ''
   }
 }
