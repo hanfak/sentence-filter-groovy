@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SentenceFilterSpec" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-09-18T06:58:11" hostname="Hanifs-MBP-2" time="0.186">
+<testsuite name="SentenceFilterSpec" tests="8" skipped="0" failures="0" errors="0" timestamp="2016-09-18T07:41:01" hostname="Hanifs-MBP-2" time="0.237">
   <properties/>
-  <testcase name="001 replace vowels in multiple word sentence" classname="SentenceFilterSpec" time="0.159"/>
+  <testcase name="001 replace vowels in multiple word sentence" classname="SentenceFilterSpec" time="0.203"/>
   <testcase name="002 replace no vowels in multiple word sentence" classname="SentenceFilterSpec" time="0.003"/>
-  <testcase name="003 replace muliple same banned word in multiple word sentence" classname="SentenceFilterSpec" time="0.002"/>
-  <testcase name="004 replace muliple same banned word different cases in multiple word sentence" classname="SentenceFilterSpec" time="0.004"/>
-  <testcase name="005 replace two different banned words in multiple word sentence" classname="SentenceFilterSpec" time="0.003"/>
-  <testcase name="006 replace banned word in another word" classname="SentenceFilterSpec" time="0.006"/>
+  <testcase name="003 replace muliple same banned word in multiple word sentence" classname="SentenceFilterSpec" time="0.006"/>
+  <testcase name="004 replace muliple same banned word different cases in multiple word sentence" classname="SentenceFilterSpec" time="0.005"/>
+  <testcase name="005 replace two different banned words in multiple word sentence" classname="SentenceFilterSpec" time="0.008"/>
+  <testcase name="006 replace banned word in another word" classname="SentenceFilterSpec" time="0.003"/>
   <testcase name="007 replace banned word in non exception word" classname="SentenceFilterSpec" time="0.003"/>
-  <testcase name="008 use different set of exception words" classname="SentenceFilterSpec" time="0.006"/>
+  <testcase name="008 use different set of exception words" classname="SentenceFilterSpec" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

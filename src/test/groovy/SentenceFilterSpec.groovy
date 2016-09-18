@@ -1,15 +1,17 @@
 import spock.lang.*
 
 class SentenceFilterSpec extends Specification {
-  BannedWords banned = Mock();
-  ExceptionWords exceptions = Mock();
-  Filter filter = new Filter()
+  BannedWords banned          = Mock();
+  ExceptionWords exceptions   = Mock();
+  Filter filter               = Mock();
+
   def sentence_filter = new SentenceFilter(exceptions, banned, filter)
 
   def '001 replace vowels in multiple word sentence'() {
     given:
-    banned.containedIn('orange') >> true;
-    exceptions.doesNotIncludes('orange') >> true;
+    banned.containedIn('orange')          >> true;
+    exceptions.doesNotIncludes('orange')  >> true;
+    filter.applyTo('orange')              >> '-r-ng-';
 
     when:
     String result = sentence_filter.change("The orange is happy");
@@ -20,7 +22,7 @@ class SentenceFilterSpec extends Specification {
 
   def '002 replace no vowels in multiple word sentence'() {
     given:
-    banned.containedIn('covered') >> true;
+    banned.containedIn('covered')         >> true;
     exceptions.doesNotIncludes('covered') >> false;
 
     when:
@@ -32,8 +34,11 @@ class SentenceFilterSpec extends Specification {
 
   def '003 replace muliple same banned word in multiple word sentence'() {
     given:
-    banned.containedIn('orange') >> true;
-    exceptions.doesNotIncludes('orange') >> true;
+    banned.containedIn('orange')            >> true;
+    banned.containedIn('coloured')          >> true;
+    exceptions.doesNotIncludes('orange')    >> true;
+    exceptions.doesNotIncludes('coloured')  >> false;
+    filter.applyTo('orange')                >> '-r-ng-';
 
     when:
     String result = sentence_filter.change("The orange coloured bat and orange hat");
@@ -44,10 +49,11 @@ class SentenceFilterSpec extends Specification {
 
   def '004 replace muliple same banned word different cases in multiple word sentence'() {
     given:
-    banned.containedIn('Orange') >> true;
-    banned.containedIn('orange') >> true;
-    exceptions.doesNotIncludes(_) >> true;
-
+    banned.containedIn('Orange')    >> true;
+    banned.containedIn('coloured')  >> true;
+    banned.containedIn('orange')    >> true;
+    exceptions.doesNotIncludes(_)   >>> [true,false,true];
+    filter.applyTo(_)               >> '-r-ng-';
 
     when:
     String result = sentence_filter.change("The orange coloured bat and Orange hat");
@@ -58,9 +64,11 @@ class SentenceFilterSpec extends Specification {
 
   def '005 replace two different banned words in multiple word sentence'() {
     given:
-    banned.containedIn('Red') >> true;
-    banned.containedIn('orange') >> true;
+    banned.containedIn('Red')     >> true;
+    banned.containedIn('orange')  >> true;
     exceptions.doesNotIncludes(_) >> true;
+    filter.applyTo('orange')      >> '-r-ng-';
+    filter.applyTo('Red')         >> 'R-d';
 
     when:
     String result = sentence_filter.change("The Red orange is happy");
@@ -71,10 +79,11 @@ class SentenceFilterSpec extends Specification {
 
   def '006 replace banned word in another word'() {
     given:
-    banned.containedIn('Reddit') >> true;
-    banned.containedIn('orange') >> true;
-    exceptions.doesNotIncludes('Reddit') >> true;
-    exceptions.doesNotIncludes('orange') >> true;
+    banned.containedIn('Reddit')  >> true;
+    banned.containedIn('orange')  >> true;
+    exceptions.doesNotIncludes(_) >> true;
+    filter.applyTo('orange')      >> '-r-ng-';
+    filter.applyTo('Reddit')      >> 'R-dd-t';
 
     when:
     String result = sentence_filter.change("The Reddit orange is happy");
@@ -85,11 +94,14 @@ class SentenceFilterSpec extends Specification {
 
   def '007 replace banned word in non exception word'() {
     given:
-
-    banned.containedIn('Reddit') >> true;
-    banned.containedIn('green') >> true;
-    banned.containedIn('red') >> true;
-    exceptions.doesNotIncludes(_) >> true;
+    banned.containedIn(_)                 >>> [false,true,true,
+                                              true,true,true,
+                                              false,false];
+    exceptions.doesNotIncludes('Reddit')  >> true;
+    exceptions.doesNotIncludes('red')     >> true;
+    exceptions.doesNotIncludes('green')   >> true;
+    filter.applyTo(_)                     >>> ['R-dd-t','r-d',
+                                              'gr--n'];
 
     when:
     String result = sentence_filter.change("The Reddit coloured red covered green is happy");
@@ -100,21 +112,17 @@ class SentenceFilterSpec extends Specification {
 
   def '008 use different set of exception words'() {
     given:
-    def sentence_filter = new SentenceFilter(exceptions, banned, filter)
-    banned.containedIn('Orange') >> true;
-    banned.containedIn('florAnge') >> true;
-    banned.containedIn('blue') >> true;
-    banned.containedIn('Bluetac') >> true;
-    banned.containedIn('red') >> true;
-    banned.containedIn('reddit') >> true;
-    banned.containedIn('green') >> true;
-    banned.containedIn('greenary') >> true;
+    banned.containedIn(_)         >>>  [true,false,true,true,
+                                        true,false,true,true,
+                                        false,true,true, true];
     exceptions.doesNotIncludes(_) >> true;
+    filter.applyTo(_)             >>> ['-r-ng-', 'fl-r-ng-',
+                                      'bl--', 'Bl--t-c', 'r-d', 'r-dd-t', 'gr--n',  'gr--n-ry'];
 
     when:
-    String result = sentence_filter.change("Orange evergreen florAnge blue Bluetac greenbelt red reddit blues green  greenary");
+    String result = sentence_filter.change("Orange evergreen florAnge blue Bluetac greenbelt red reddit blues green greenary");
 
     then:
-    result == "-r-ng- evergreen fl-r-ng- bl-- Bl--t-c greenbelt r-d r-dd-t blues gr--n  gr--n-ry";
+    result == "-r-ng- evergreen fl-r-ng- bl-- Bl--t-c greenbelt r-d r-dd-t blues gr--n gr--n-ry";
   }
 }
